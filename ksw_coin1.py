@@ -71,7 +71,7 @@ def get_chart(ticker):
     return 0
 
 
-upbit = pyupbit.Upbit("YCLVLxhebRXFKuo1z7DzuDmCmcq0xhNUvNziObOd", "O15cNUnhGxSlxuw7oMYNEScU4dCwXmvV5aKXJZpO")
+upbit = pyupbit.Upbit("")
 now = datetime.datetime.now()
 print("[%s] - AUTO UPBIT START" % now.strftime("%Y-%m-%d"))
 post_message(mystock, "#stock", "[%s] - AUTO UPBIT START" % now.strftime("%Y-%m-%d"))
