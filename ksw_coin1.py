@@ -7,7 +7,7 @@ import time
 # 변수
 access = "your-access"
 secret = "your-secret"
-mystock = "xoxb-3566443758993-3550928334533-CnKlrApAFl1JbVPhi6A1Mapd"
+mystock = ""
 
 
 # #################
