@@ -82,36 +82,34 @@ while True:
 
         if buy_check == 0 :
             if ma15_price == ma50_price :
-                post_message(mystock,"#stock", "<< JACKPOT [THE SAME PRICE] >> : " + str(buy_result))
+                post_message(mystock,"#stock", "<< JACKPOT [THE SAME PRICE [ma15 %s : ma50 %s]] >> : " % (ma15_price,ma50_price))
+                
                 krw_money = get_balance("KRW")
                 if float(krw_money) > 5000 :
                     print("<< JACKPOT [ALL BUY] >>")
                     buy_result = upbit.buy_market_order("KRW-XRP", float(krw_money)*0.9995)
-                    post_message(mystock,"#stock", "<< JACKPOT [ALL BUY] >> : " + str(buy_result))
+                    post_message(mystock,"#stock", "<< JACKPOT [ALL BUY] >> : " + buy_result['market'])
                     buy_check = 1
                 else:
                     print("NO MONEY")
-                    post_message(mystock,"#stock", "<< JACKPOT [NO MONEY] >> : ")
+                    post_message(mystock,"#stock", "<< JACKPOT [NO MONEY] >>")
                     
         if buy_check == 1 :
             if current_price > ma15_price :
                 print("<< JACKPOT [JONBEO] >>")
+                
             if current_price <= ma15_price :
                 xrp = get_balance("XRP")
                 if float(xrp) > 0.00008:
                     print("<< JACKPOT [ALL SELL] >>")
                     sell_result = upbit.sell_market_order("KRW-XRP", float(xrp)*0.9995)
-                    post_message(mystock,"#stock", "<< JACKPOT [ALL SELL] >> : " + str(sell_result))
+                    post_message(mystock,"#stock", "<< JACKPOT [ALL SELL] >> : " + sell_result['market'])
                     buy_check = 0
-                time.sleep(10)               
+                time.sleep(3)               
 
-    except Exception as e:
-        print("ERROR NAME  :  %s" % e)
+    except Exception as e:   
+        if str(e) == "'NoneType' object is not subscriptable":
+            pass
+        else:
+            print("ERROR NAME  :  %s" % e)
         time.sleep(3)
-        # exit()
-        
-
-
-
-
-        
