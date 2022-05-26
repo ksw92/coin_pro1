@@ -84,9 +84,9 @@ while True:
             if ma15_price == ma50_price :
                 post_message(mystock,"#stock", "<< JACKPOT [THE SAME PRICE] >> : " + str(buy_result))
                 krw_money = get_balance("KRW")
-                if krw_money > 5000 :
+                if float(krw_money) > 5000 :
                     print("<< JACKPOT [ALL BUY] >>")
-                    buy_result = upbit.buy_market_order("KRW-XRP", krw_money*0.9995)
+                    buy_result = upbit.buy_market_order("KRW-XRP", float(krw_money)*0.9995)
                     post_message(mystock,"#stock", "<< JACKPOT [ALL BUY] >> : " + str(buy_result))
                     buy_check = 1
                 else:
@@ -98,9 +98,9 @@ while True:
                 print("<< JACKPOT [JONBEO] >>")
             if current_price <= ma15_price :
                 xrp = get_balance("XRP")
-                if xrp > 0.00008:
+                if float(xrp) > 0.00008:
                     print("<< JACKPOT [ALL SELL] >>")
-                    sell_result = upbit.sell_market_order("KRW-XRP", xrp*0.9995)
+                    sell_result = upbit.sell_market_order("KRW-XRP", float(xrp)*0.9995)
                     post_message(mystock,"#stock", "<< JACKPOT [ALL SELL] >> : " + str(sell_result))
                     buy_check = 0
                 time.sleep(10)               
@@ -109,4 +109,9 @@ while True:
         print("ERROR NAME  :  %s" % e)
         time.sleep(3)
         # exit()
+        
+
+
+
+
         
