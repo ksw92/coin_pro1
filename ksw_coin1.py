@@ -1,11 +1,8 @@
 import datetime
-from matplotlib import ticker
+import time
+import matplotlib.pyplot as plt
 import pyupbit
 import requests
-import pandas as pd
-import matplotlib.pyplot as plt
-import time
-from slacker import Slacker
 
 # 변수
 access = ""
