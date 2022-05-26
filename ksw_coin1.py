@@ -8,9 +8,9 @@ import time
 from slacker import Slacker
 
 # 변수
-access = ""
-secret = ""
-mystock = ""
+access = "1Q6NeB157MGT1JXwG8f140BlGYkWV4Yw2i3AzoLm"
+secret = "MG8qptd3wKBi18ztVRLJVvbePljiEVHQpmukYHzw"
+mystock = "xoxb-3566443758993-3550928334533-E4wJhhP7eWd1ZV9cxZMQHSwa"
 # #################
 
 # 슬랙전송
@@ -83,21 +83,21 @@ while True:
         if buy_check == 0 :
             if ma15_price == ma50_price :
                 post_message(mystock,"#stock", "<< JACKPOT [THE SAME PRICE [ma15 %s : ma50 %s]] >> : " % (ma15_price,ma50_price))
-                
-                krw_money = get_balance("KRW")
-                if float(krw_money) > 5000 :
-                    print("<< JACKPOT [ALL BUY] >>")
-                    buy_result = upbit.buy_market_order("KRW-XRP", float(krw_money)*0.9995)
-                    post_message(mystock,"#stock", "<< JACKPOT [ALL BUY] >> : " + buy_result['market'])
-                    buy_check = 1
-                else:
-                    print("NO MONEY")
-                    post_message(mystock,"#stock", "<< JACKPOT [NO MONEY] >>")
+                if current_price > ma15_price :      
+                    post_message(mystock,"#stock", "<< LOVE KSW >>")
+                    krw_money = get_balance("KRW")
+                    if float(krw_money) > 5000 :
+                        print("<< JACKPOT [ALL BUY] >>")
+                        buy_result = upbit.buy_market_order("KRW-XRP", float(krw_money)*0.9995)
+                        post_message(mystock,"#stock", "<< JACKPOT [ALL BUY] >> : " + buy_result['market'])
+                        buy_check = 1
+                    else:
+                        print("NO MONEY")
+                        post_message(mystock,"#stock", "<< JACKPOT [NO MONEY] >>")
                     
         if buy_check == 1 :
             if current_price > ma15_price :
-                print("<< JACKPOT [JONBEO] >>")
-                
+                print("<< JACKPOT [JONBEO] >>") 
             if current_price <= ma15_price :
                 xrp = get_balance("XRP")
                 if float(xrp) > 0.00008:
