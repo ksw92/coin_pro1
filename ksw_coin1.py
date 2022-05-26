@@ -8,9 +8,9 @@ import time
 from slacker import Slacker
 
 # 변수
-access = "1Q6NeB157MGT1JXwG8f140BlGYkWV4Yw2i3AzoLm"
-secret = "MG8qptd3wKBi18ztVRLJVvbePljiEVHQpmukYHzw"
-mystock = "xoxb-3566443758993-3550928334533-E4wJhhP7eWd1ZV9cxZMQHSwa"
+access = ""
+secret = ""
+mystock = ""
 # #################
 
 # 슬랙전송
