@@ -4,8 +4,8 @@ import datetime
 import requests
 
 ################################################
-access = "1Q6NeB157MGT1JXwG8f140BlGYkWV4Yw2i3AzoLm"
-secret = "MG8qptd3wKBi18ztVRLJVvbePljiEVHQpmukYHzw"
+access = ""
+secret = ""
 stock = ""
 
 
