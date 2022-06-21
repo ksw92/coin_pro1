@@ -7,7 +7,7 @@ import requests
 access = "5I9JQCQ21obbyno3631A2xlisGjCVgzxLw8csbDb"
 secret = "qJytN9DZfS9ruxkBDyllUS7hmYBM7RvaFy9DRWS8"
 stock = "xoxb-3566443758993-3574327487846-p6kwN1NKnx6zDFA6KMp5uuzK"
-coinN = "KRW-XRP"
+coinN = "STORJ-XRP"
 tk = 0.5
 
 
