@@ -6,9 +6,9 @@ import requests
 ################################################
 access = "5I9JQCQ21obbyno3631A2xlisGjCVgzxLw8csbDb"
 secret = "qJytN9DZfS9ruxkBDyllUS7hmYBM7RvaFy9DRWS8"
-stock = "xoxb-3566443758993-3574327487846-giM8UKVZTCCaAkyaqlo8WsYa"
+stock = "xoxb-3566443758993-3574327487846-6PbychmqCV434pay1CvDqHZM"
 coinN = "KRW-MANA"
-tk = 0.4
+tk = 0.5
 
 ################################################
 def post_message(token, mystock, text):
@@ -103,14 +103,18 @@ while True:
         ma50_price = get_ma50(coinN)                     # 50ma
         korea_price = get_balance("KRW")                 # 내지갑
         sell_price = get_balance(coinN.split("-")[1])    # 내XRP
-        
-        
+
+
         if cross_check == 0 :
             if ma15_price > ma50_price:
-                post_message(stock, "#stock", "[CHECK]\n 골드크로스구간\n 돈을벌고 싶다.")
+                post_message(stock, "#stock", "[CHECK]\n 골드크로스구간\n 투자하자.")
                 cross_check = 1
                 pass
 
+        if ma15_price < ma50_price:
+            cross_check = 0
+            pass
+        
         if time_check == 0:
             if current_time.hour == 9:
                 post_message(stock, "#stock", "[CHECK]\n 09:00 장이 시작되었습니다.")
@@ -120,8 +124,8 @@ while True:
         if current_time.hour > 9:
             time_check = 0
             pass
-        
-        
+
+
         ##########################################################################
         if buy_check == 0 and cross_check == 1 :
             if 10 < current_time.minute < 30:
@@ -137,11 +141,11 @@ while True:
                         buy_check = 1
                     else:
                         post_message(stock, "#stock", "[NO-MONEY]")
-                
+
 
         if buy_check == 1:
             if current_time.minute == 45 or current_time.minute == 30:
-                post_message(stock, "#stock", "[CHECK]\n MINUTE45 \n SELL OR HOLD")
+                post_message(stock, "#stock", "[CHECK]\n MINUTE30, MINUTE45 \n SELL OR HOLD")
                 if close_price[0] <= close_price[1]:
                     """전날 종가보다 현재종가가 같거나 크면 유지"""
                     if sell_check == 0:
