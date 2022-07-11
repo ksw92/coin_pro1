@@ -6,7 +6,7 @@ import requests
 ################################################
 access = "5I9JQCQ21obbyno3631A2xlisGjCVgzxLw8csbDb"
 secret = "qJytN9DZfS9ruxkBDyllUS7hmYBM7RvaFy9DRWS8"
-stock = "xoxb-3566443758993-3574327487846-IgTM2sw0aoGabXSJeSaobkGe"
+stock = "xoxb-3566443758993-3574327487846-KU3XJ0lN7YC6PS82uYv42j7f"
 coinN = "KRW-MANA"
 tk = 0.5
 
@@ -43,7 +43,7 @@ def get_close_price(ticker):
 
 def get_ma15(ticker):
     """15 이동평균선 값"""
-    conin_OHLCV = pyupbit.get_ohlcv(ticker, interval="minute30", count=15)
+    conin_OHLCV = pyupbit.get_ohlcv(ticker, interval="minute60", count=15)
     ma15 = conin_OHLCV['close'].rolling(15).mean().iloc[-1]
     ma15 = round(ma15, 1)
     return ma15
@@ -51,7 +51,7 @@ def get_ma15(ticker):
 
 def get_ma50(ticker):
     """50 이동평균선 값"""
-    conin_OHLCV = pyupbit.get_ohlcv(ticker, interval="minute30", count=50)
+    conin_OHLCV = pyupbit.get_ohlcv(ticker, interval="minute60", count=50)
     ma50 = conin_OHLCV['close'].rolling(50).mean().iloc[-1]
     ma50 = round(ma50, 1)
     return ma50
