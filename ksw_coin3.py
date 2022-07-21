@@ -139,23 +139,22 @@ while True:
             pass
 
 
-        ##########################################################################
+        ############################매수############################################
         if buy_check == 0 and cross_check == 1 :
             if 10 < current_time.minute < 30:
-                if target_price[1] == current_price:
+                if close_price[1] >= ma15_price and target_price[1] == current_price :
                     post_message(stock, "#stock",
-                                 "[TARGET-PRICE]\n CV-K : %s\n TP : %s\n CP : %s" % (target_price[0],
-                                                                                     target_price[1],
-                                                                                     current_price))
+                                "[TARGET-PRICE]\n CV-K : %s\n TP : %s\n CP : %s" % (target_price[0],
+                                                                                    target_price[1],
+                                                                                    current_price))
                     if float(korea_price) > 5000:
                         buy_result = upbit.buy_market_order(coinN, float(korea_price) * 0.9995)
-                        post_message(stock, "#stock",
-                                     "[BUY]\n %s \n Current Price : %s" % (coinN, current_price))
+                        post_message(stock, "#stock","[BUY]\n %s \n Current Price : %s" % (coinN, current_price))
                         buy_check = 1
                     else:
                         post_message(stock, "#stock", "[NO-MONEY]")
 
-
+        ############################매도############################################
         if buy_check == 1:
             if current_time.minute == 45 :
                 if close_price[1] > ma15_price :
@@ -181,5 +180,5 @@ while True:
         else:
             print("ERROR NAME  :  %s" % e)
             post_message(stock, "#stock", "[ERROR NAME] : %s" % e)
-        time.sleep(3)
 
+        time.sleep(3)
